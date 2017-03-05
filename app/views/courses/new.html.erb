@@ -1,12 +1,20 @@
 <%= provide(:title, "Create a new Course") %>
 
-<%= form_for @course do |f| %>
-    
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    
-    <%= f.label :section %>
-    <%= f.text_field :section %>
-    
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <%= form_for @course do |f| %>
+        
+            <%= f.label :crn %>
+            <%= f.text_field :crn, class: 'form-control'%>
+            
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
+            
+            <%= f.label :section %>
+            <%= f.text_field :section, class: 'form-control' %>
+            
+            <%= f.submit "Submit", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+
+</div>

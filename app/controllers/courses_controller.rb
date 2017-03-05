@@ -11,11 +11,13 @@ class CoursesController < ApplicationController
         if @course.save
             flash[:success] = "Course added!"
             redirect_to courses_path
+        else
+            render 'new'
         end
     end
     
     private
         def course_params
-            params.require(:course).permit(:title, :section)
+            params.require(:course).permit(:crn, :title, :section)
         end
 end
