@@ -1,24 +1,17 @@
+Project Description
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+Looking for a Class Attendance System for a school
 
+•	Teacher Login
 
-Welcome to your Rails project on Cloud9 IDE!
+•	Add Class and within Class, option to add Students
 
-To get started, just do the following:
+•	Mark Present/Absent/Late
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://attendence-system-missimi.c9users.io/).
+•	Add/Update/Delete Student Name, Roll number, Class, Section
 
-Happy coding!
-The Cloud9 IDE team
+•	Add Comment
 
+•	Print Attendance Sheet
 
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+Preferably in ruby but i'm open to anything which is reliable and has a good interface.
