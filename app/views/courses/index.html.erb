@@ -1,2 +1,12 @@
 <% provide(:title, "Courses Home Page") %>
 <h1>Courses Home Page</h1>
+<ul>
+    <% @courses.each do |course| %>
+        <li>
+            <%= course.id %>
+            <%= course.title %>
+            <%= course.section %>
+        </li>
+    
+    <% end %>
+</ul>

@@ -1,0 +1,12 @@
+<%= provide(:title, "Create a new Course") %>
+
+<%= form_for @course do |f| %>
+    
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    
+    <%= f.label :section %>
+    <%= f.text_field :section %>
+    
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
