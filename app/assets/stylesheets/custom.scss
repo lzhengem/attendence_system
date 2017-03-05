@@ -19,28 +19,17 @@
 }
 
 /* universal */
-
-// alternate table row colors
-td :nth-child(even){
-  background-color: #dcdcdc;
-}
-td :nth-child(odd){
-  background-color: #aaaaaa;
-}
-
-td {
-  padding-left: 10px;
-  
-}
-body {
-  padding-top: 60px;
-}
-.pass{
-  color: green;
-  font-weight: bold;
-  
-}
-.fail{
+#error_explanation {
   color: red;
-  font-weight: bold;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }

@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  section: MyString
-  title: MyString
-
-two:
-  section: MyString
-  title: MyString
+programming:
+  crn: 111
+  section: Programming
+  title: 1b
