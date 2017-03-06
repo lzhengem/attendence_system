@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306042853) do
+ActiveRecord::Schema.define(version: 20170306053051) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "crn"
-    t.string   "section"
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -23,14 +22,11 @@ ActiveRecord::Schema.define(version: 20170306042853) do
 
   add_index "courses", ["crn"], name: "index_courses_on_crn", unique: true
 
-  create_table "rosters", force: :cascade do |t|
+  create_table "sections", force: :cascade do |t|
+    t.integer  "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "course_id"
-    t.integer  "student_id"
   end
-
-  add_index "rosters", ["course_id"], name: "index_rosters_on_course_id"
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"

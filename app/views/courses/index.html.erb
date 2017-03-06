@@ -3,9 +3,8 @@
 <ul>
     <% @courses.each do |course| %>
         <li>
-            <%= course.crn %>
-            <%= course.title %>
-            <%= course.section %>
+            <%= link_to "#{course.crn} #{course.title}", course_path(course) %>
+            
         </li>
     
     <% end %>

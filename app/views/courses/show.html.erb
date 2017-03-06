@@ -1,0 +1,13 @@
+<% provide(:title, "Course detail") %>
+
+<h1>Course <%= @course.crn %></h1>
+
+Title: <%= @course.title%>
+
+<%= form_for @course do |f| %>
+    How many sections would you like to add?
+    <%=f.label :num_sections %>
+    <%=f.text_field :num_sections, class: 'form-control' %>
+    <%= f.submit "Add sections" %>
+
+<% end %>

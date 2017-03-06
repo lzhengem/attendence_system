@@ -25,6 +25,6 @@ class CoursesController < ApplicationController
     
     private
         def course_params
-            params.require(:course).permit(:crn, :title, :section)
+            params.require(:course).permit(:crn, :title)
         end
 end
