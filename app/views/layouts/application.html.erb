@@ -10,8 +10,6 @@
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
     <% end %>
-    <!--to check what flash looks like-->
-    <%= flash.inspect %>
   </div>
 
   <%= yield %>
