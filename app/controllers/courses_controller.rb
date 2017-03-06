@@ -16,6 +16,9 @@ class CoursesController < ApplicationController
         end
     end
     
+    def destroy
+    end
+    
     private
         def course_params
             params.require(:course).permit(:crn, :title, :section)

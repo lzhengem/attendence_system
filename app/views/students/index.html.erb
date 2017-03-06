@@ -1,0 +1,8 @@
+<% provide(:title, "Student Home") %>
+
+<h1>Student Home</h1>
+
+<% @students.each do |student|%>
+    <%= student.first_name %>
+    <%= student.last_name %>
+<% end %>
