@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
     has_many :sections
-    # has_many :students, through: :rosters
+    has_many :students, through: :sections
     validates :crn, presence: true, uniqueness: true
     
     # def add_student(student)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306053051) do
+ActiveRecord::Schema.define(version: 20170331184927) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "crn"
@@ -22,17 +22,33 @@ ActiveRecord::Schema.define(version: 20170306053051) do
 
   add_index "courses", ["crn"], name: "index_courses_on_crn", unique: true
 
+  create_table "section_students", force: :cascade do |t|
+    t.integer  "section_id"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "section_students", ["section_id"], name: "index_section_students_on_section_id"
+  add_index "section_students", ["student_id"], name: "index_section_students_on_student_id"
+
   create_table "sections", force: :cascade do |t|
     t.integer  "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "student_id"
   end
+
+  add_index "sections", ["student_id"], name: "index_sections_on_student_id"
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "section_id"
   end
+
+  add_index "students", ["section_id"], name: "index_students_on_section_id"
 
 end
