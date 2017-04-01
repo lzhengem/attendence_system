@@ -1,11 +1,20 @@
 <% provide(:title, "Courses Home Page") %>
 <h1>Courses Home Page</h1>
-<ul>
+<ul style="list-style: none;">
     <% @courses.each do |course| %>
-        <li>
-            <%= link_to "#{course.crn} #{course.title}", course_path(course) %>
-            
+        <!--create a toggle to show the sections under these courses-->
+        <li data-toggle="collapse" data-target="#sections-<%=course.crn%>"><span class="caret"></span> 
+        <!--<%= "#{course.crn} #{course.title}" %>-->
+        <%= link_to "#{course.crn} #{course.title}", course_path(course) %>
+            <ul class="collapse" id="sections-<%=course.crn%>">
+                
+                <% course.sections.each do |section|%>
+                    <li><%= section.id %></li>
+                <%end%>
+                
+            </ul>
         </li>
+    
     
     <% end %>
 </ul>
