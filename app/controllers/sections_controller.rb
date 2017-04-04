@@ -16,7 +16,7 @@ class SectionsController < ApplicationController
 
         @section.add_students(not_enrolled)
         # @section.add_students(not_enrolled)
-        # @section.remove_students(enrolled)
+        @section.remove_students(enrolled)
         # flash['danger'] = not_enrolled
         # flash['danger'] = enrolled
         
@@ -25,10 +25,10 @@ class SectionsController < ApplicationController
     
     private
         def not_enrolled
-            params.permit(student_ids:[])["student_ids"]
+            params.require(:section).permit(student_ids:[])["student_ids"] ||= []
         end
         def enrolled
-            params.require(:section).permit(students:[])
+            params.require(:section).permit(students:[])["students"] ||= []
         end
     
 end
