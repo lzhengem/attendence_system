@@ -13,9 +13,10 @@ class SectionsController < ApplicationController
         # add multiple students to the section
         @section = Section.find_by(id: params[:id])
 
-        
+
         @section.add_students(not_enrolled)
-        @section.remove_students(enrolled)
+        # @section.add_students(not_enrolled)
+        # @section.remove_students(enrolled)
         # flash['danger'] = not_enrolled
         # flash['danger'] = enrolled
         
@@ -24,7 +25,7 @@ class SectionsController < ApplicationController
     
     private
         def not_enrolled
-            params.require(:section).permit(student_ids:[])
+            params.permit(student_ids:[])["student_ids"]
         end
         def enrolled
             params.require(:section).permit(students:[])

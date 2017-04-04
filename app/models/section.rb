@@ -12,28 +12,20 @@ class Section < ActiveRecord::Base
         end
     end
     
-    def remove_students(student_ids)
-        student_ids.each do |student_id|
-            student = Student.find_by(id: student_id)
-            students.delete(student)
-        end
-    end
-    
-    # def add_students(student_ids)
-    #     students_to_add = []
-    #     student_ids.each do |student_id|
-    #         students_to_add << Student.find_by(id: student_id)
-    #     end
-    #     students << students_to_add.flatten
-    # end
-    
     # def remove_students(student_ids)
-    #     students_to_remove = []
     #     student_ids.each do |student_id|
-    #         students_to_remove << Student.find_by(id: student_id)
+    #         student = Student.find_by(id: student_id)
+    #         students.delete(student)
     #     end
-    #     students.delete(students_to_remove.flatten)
     # end
     
+    # def add_student(student_id)
+    #     student = Student.find_by(id: student_id)
+    #     students << student
+    # end
     
+    def remove_student(student_id)
+        student = Student.find_by(id: student_id)
+        students.delete(student)
+    end
 end

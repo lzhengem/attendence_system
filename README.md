@@ -14,4 +14,3 @@ Looking for a Class Attendance System for a school
 
 •	Print Attendance Sheet
 
-Preferably in ruby but i'm open to anything which is reliable and has a good interface.
