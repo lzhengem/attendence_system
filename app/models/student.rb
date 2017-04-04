@@ -5,8 +5,16 @@ class Student < ActiveRecord::Base
     
     validates :first_name, presence: true
     validates :last_name, presence: true
+    before_save :capitalize_name
     
     def full_name
         "#{first_name} #{last_name}"
     end
+    
+    def capitalize_name
+        self.first_name.capitalize!
+        self.last_name.capitalize!
+    end
+    
+    
 end
