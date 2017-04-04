@@ -6,4 +6,7 @@
 Sections: <% @course.sections.each do |section| %>
             <br><%= section.id %>
             <%end %>
+            
+<!--<%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => @course.id}, :method => :delete, data: {confirm: "Are you sure?"} %>-->
+<%= button_to "Delete", @course, :method => :delete, class: 'btn btn-primary', data: {confirm: "Deleting this course will delete all subsequent sections, are you sure?"} %>
     

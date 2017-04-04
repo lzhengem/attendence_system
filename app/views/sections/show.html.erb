@@ -1,0 +1,14 @@
+<% provide(:title, "Section detail") %>
+<h1>Title: <%= "#{@section.course.crn} #{@section.course.title}"%></h1>
+<h2>Section: <%= @section.id %></h2>
+
+
+<br>Enrolled students: <ul><% @section.students.each do |student|%>
+                <li><%= "#{student.first_name} #{student.last_name} "%></li>
+                <% end %>
+                
+                </ul>
+</br>
+
+<%= link_to "Add students to course", edit_section_path(@section) %>
+    

@@ -4,12 +4,12 @@
     <% @courses.each do |course| %>
         <!--create a toggle to show the sections under these courses-->
         <li data-toggle="collapse" data-target="#sections-<%=course.crn%>"><span class="caret"></span> 
-        <!--<%= "#{course.crn} #{course.title}" %>-->
         <%= link_to "#{course.crn} #{course.title}", course_path(course) %>
+    
             <ul class="collapse" id="sections-<%=course.crn%>">
                 
                 <% course.sections.each do |section|%>
-                    <li><%= section.id %></li>
+                    <li><%= link_to section.id, section_path(section) %></li>
                 <%end%>
                 
             </ul>

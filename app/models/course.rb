@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-    has_many :sections
+    has_many :sections, dependent: :destroy
     has_many :students, -> { distinct }, through: :sections
     validates :crn, presence: true, uniqueness: true
     

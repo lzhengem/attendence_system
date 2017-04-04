@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
         if @course.save
             
             @course.add_section(section_params)
-            flash[:success] = "Course added! #{section_params}"
+            flash[:success] = "Course added!"
             redirect_to courses_path
         else
             render 'new'
@@ -26,6 +26,8 @@ class CoursesController < ApplicationController
     end
     
     def destroy
+        Course.find_by(id: params[:id]).destroy
+        redirect_to courses_path
     end
     
     private
