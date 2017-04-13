@@ -8,6 +8,7 @@ class CoursesCreateTest < ActionDispatch::IntegrationTest
     @course = courses(:programming)
   end
   
+  #if there is a course in the database already with the same crn, dont let it save
   test "should not save an invalid course" do
     get new_course_path
   
@@ -23,7 +24,6 @@ class CoursesCreateTest < ActionDispatch::IntegrationTest
   
   test "should save valid course" do
     get new_course_path
-    
     #create new course with 5 sections, make sure courses increase by 1 and section increases by 5
     assert_difference "Course.count", 1 do
       assert_difference "Section.count", 5 do
@@ -36,4 +36,18 @@ class CoursesCreateTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_not flash.empty?
   end
+  
+  test "deleting the course should delete the correlated sections" do
+    assert_difference 'Section.count', 5 do
+      @course.add_section(5)
+    end
+    
+    assert_difference 'Course.count', -1 do
+      assert_difference 'Section.count', -5 do
+        @course.destroy
+      end
+    end
+    
+  end
+  
 end

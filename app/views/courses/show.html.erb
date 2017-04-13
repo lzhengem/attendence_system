@@ -4,7 +4,7 @@
 
 <br>Title: <%= @course.title%></br>
 Sections: <% @course.sections.each do |section| %>
-            <br><%= section.id %>
+            <br><%= link_to section.id, section_path(section) %>
             <%end %>
             
 <!--<%= button_to "Delete", {:controller => :courses, :action => 'destroy', :id => @course.id}, :method => :delete, data: {confirm: "Are you sure?"} %>-->
