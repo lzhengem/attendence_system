@@ -20,7 +20,7 @@ class SectionsController < ApplicationController
         # flash['danger'] = not_enrolled
         # flash['danger'] = enrolled
         
-        redirect_to @section
+        redirect_to edit_section_path(@section)
     end
     
     private

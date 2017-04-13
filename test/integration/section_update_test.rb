@@ -5,7 +5,6 @@ class SectionUpdateTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
   def setup
-    @course = courses(:programming)
     @student = students(:sakura)
   end
   
@@ -20,7 +19,7 @@ class SectionUpdateTest < ActionDispatch::IntegrationTest
     #there should be no students in the course
     assert_equal @section.students.count, 0 
     
-    #add students to the course
+    #add 1 student to the course
     get edit_section_path(@section)
     patch section_path(@section), section: {student_ids: [@student.id]}
     
