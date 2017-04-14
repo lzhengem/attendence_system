@@ -1,1 +1,18 @@
 -allow mass creation of students
+- create attendance for students
+class Session
+  has_many :attendances
+  has_many :students, through: :attendances
+  belongs_to :section
+  #attr_accessible :day
+end
+
+class Attendance
+  attr_accessible :state #[:present, absent, :tardy...]
+  belongs_to :student
+end
+
+class Student
+  has_many :attendances
+  has_many :sessions, through: :attendances
+end

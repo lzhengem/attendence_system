@@ -2,6 +2,7 @@ class Section < ActiveRecord::Base
     belongs_to :course
     has_many :section_students, dependent: :destroy
     has_many :students, -> { distinct }, through: :section_students
+    has_many :sessions
     
     
     #adds students to sections. this expects an array of student ids

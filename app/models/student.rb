@@ -2,6 +2,8 @@ class Student < ActiveRecord::Base
     has_many :section_students, dependent: :destroy #this table is to maintain the has_and_belongs_to_many relationship
     has_many :sections, through: :section_students
     has_many :courses, -> { distinct }, through: :sections
+    has_many :attendances
+    has_many :sessions, through: :attendances
     
     validates :first_name, presence: true
     validates :last_name, presence: true

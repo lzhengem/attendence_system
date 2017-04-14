@@ -1,4 +1,5 @@
 class Attendance < ActiveRecord::Base
-  belongs_to :section
-  belongs_to :student
+    attr_accessor :state
+    belongs_to :student
+    belongs_to :session
 end

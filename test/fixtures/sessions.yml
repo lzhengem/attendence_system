@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  present: false
-  student_id: 
+  section_id: 
+  day: 2017-04-13
 
 two:
-  present: false
-  student_id: 
+  section_id: 
+  day: 2017-04-13
