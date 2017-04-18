@@ -11,6 +11,10 @@ class SessionsController < ApplicationController
         # if the session already exists, then overwrite it
         # @session = @section.sessions.find_by(date: session_params[:date])
         
+        #destroy the old session if it exists
+        if @old_section = @section.sessions.find_by(date: session_params[:date])
+            @old_section.destroy
+        end
         # need to generate section and student records
         @session = @section.sessions.build(date: session_params[:date])
         if @session.save
@@ -23,10 +27,12 @@ class SessionsController < ApplicationController
     
     def show
         @session = Session.find(params[:id])
+        @attendances = @session.attendances
     end
     
     private
         def session_params
             params.require(:session).permit(:date,:section_id,:student_ids=>[])
+            
         end
 end

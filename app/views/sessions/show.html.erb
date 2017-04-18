@@ -2,4 +2,9 @@
 
 <h2>Attendance for <%= @session.date%></h2>
 
-<%= @session.attendances %>
+Student name Present
+<% @attendances.each do |attendance| %>
+<br><%= attendance.student.full_name %> <%= attendance.present %> 
+
+<% end %>
+
