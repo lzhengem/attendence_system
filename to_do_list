@@ -17,4 +17,4 @@ class Student
   has_many :sessions, through: :attendances
 end
 
--was able to add new session. need a way to save it to database
+-make it easier to use
