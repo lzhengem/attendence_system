@@ -1,0 +1,22 @@
+<% provide(:title, "Create a session") %>
+
+<h2>Attendance for <%= Date.today%></h2>
+
+Student:  Present?
+<%=form_for @session do |f|%>
+    <%= f.text_field :date, :value=> Date.today %>
+    <%=f.hidden_field :section_id, :value => @section.id %>
+    
+
+    <%= f.collection_check_boxes :student_ids, @section.students, :id, :full_name,:include_hidden => false %>
+    
+    <%= f.submit "go" %>
+<% end %>
+
+
+    <!--#@section.students.each do |student|-->
+    <!--#student.first_name -->
+    <!--#check_box_tag(student.id, value = student.id, checked = false, options = {}) %>-->
+    
+    <!--#end %>-->
+    
