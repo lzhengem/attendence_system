@@ -3,7 +3,7 @@ class Student < ActiveRecord::Base
     has_many :sections, through: :section_students
     has_many :courses, -> { distinct }, through: :sections
     has_many :attendances, dependent: :destroy
-    has_many :sessions, through: :attendances
+    has_many :sessions, through: :sections
     
     validates :first_name, presence: true
     validates :last_name, presence: true

@@ -2,8 +2,17 @@ class SessionsController < ApplicationController
     def new
         
         @section = Section.find_by(id: params[:section])
-        @session = Session.new
-        # @session = @section.sessions.find_by(date: params[:date]) || Session.new
+        #either it has a new one or create a new one
+        @session = @section.sessions.find_by(date: params[:date]) || @section.sessions.create(date: params[:date])
+        
+        #if there is no attandance or there are students missing in the attendance, update it
+        @session.initialize_student_attendance(@session.students.ids)
+        redirect_to edit_session_path(@session)
+    end
+    
+    def edit
+        @session = Session.find_by(id: params[:id])
+        @attendances = @session.attendances
     end
     
     def create
