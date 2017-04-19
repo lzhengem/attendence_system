@@ -29,7 +29,7 @@ class Session < ActiveRecord::Base
       
       # find all the students for this session that does not an attendance record
       # and create an attendance record for them
-      unless attendances.pluck(:student_id).include?(student_id) then attendances.create(student: @student, present: false) end
+      unless attendances.pluck(:student_id).include?(student_id) then attendances.create(student_id: student_id, present: false) end
     end
   end
 end
