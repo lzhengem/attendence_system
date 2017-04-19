@@ -1,6 +1,7 @@
 <% provide(:title, "Section detail") %>
 <h1>Title: <%= "#{@section.course.crn} #{@section.course.title}"%></h1>
 <h2>Section: <%= @section.id %></h2>
+<%= link_to "Back", :back, class: "btn btn-primary" %>
 <!--data can be retrieved in the controller using params[:section]-->
 <h2>Attendance for <%= link_to Date.today, new_session_path(section: @section, date: Date.today) %></h2>
 

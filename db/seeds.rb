@@ -8,6 +8,7 @@
 course = Course.create(crn: 111, title: 'Magic')
 course.add_section(5)
 section = course.sections.first
+second_section = course.sections.second
 
 # create students
 Student.create([{first_name: 'Sakura', last_name: 'Kinomoto'},
@@ -17,7 +18,16 @@ Student.create([{first_name: 'Sakura', last_name: 'Kinomoto'},
                 {first_name: 'Meiling', last_name: 'Rae'}
                 ])
                 
+6.upto(100) do |num|
+    Student.create(first_name: "student_#{num}", last_name: "last_name")
+end
+
+
 # put 3 students in first section of course
-Student.take(3).each do |student|
+Student.take(5).each do |student|
     section.students << student
+end
+
+Student.offset(5).take(10).each do |student|
+    second_section.students << student
 end

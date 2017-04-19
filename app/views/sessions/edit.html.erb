@@ -1,6 +1,7 @@
 <% provide(:title, "Attendance") %>
 
 <h2>Attendance for <%= @session.date %></h2> 
+<%= link_to "Back to section view", section_path(@session.section), class: "btn btn-primary" %>
 
 
 

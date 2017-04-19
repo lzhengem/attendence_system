@@ -2,6 +2,7 @@
 
 
 <h1>Title: <%= "#{@section.course.crn} #{@section.course.title}"%></h1>
+<%= link_to "Back to section view", section_path(@section), class: "btn btn-primary" %>
 
 
 <%= form_for @section do |f|%>
