@@ -21,8 +21,8 @@ class Student < ActiveRecord::Base
         self.last_name.capitalize!
     end
     
-    def present_at?(session)
-        attendances.find_by(session_id: session).present
+    def present_at?(session_parm)
+        attendances.find_by(session_id: session_parm).present
     end
     
 end

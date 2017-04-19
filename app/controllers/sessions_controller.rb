@@ -16,26 +16,32 @@ class SessionsController < ApplicationController
     end
     
     def update
+        @session = Session.find_by(id: params[:id])
+        #reject the empty ids
+        present_student_ids = session_params[:student_ids].reject{|id| id.to_i.zero?} || []
+        
+        @session.update_student_attendance(present_student_ids)
+        redirect_to edit_session_path(@session)
     end
     
-    def create
-        @section=Section.find(session_params[:section_id])
-        # if the session already exists, then overwrite it
-        # @session = @section.sessions.find_by(date: session_params[:date])
+    # def create
+    #     @section=Section.find(session_params[:section_id])
+    #     # if the session already exists, then overwrite it
+    #     # @session = @section.sessions.find_by(date: session_params[:date])
         
-        #destroy the old session if it exists
-        if @old_section = @section.sessions.find_by(date: session_params[:date])
-            @old_section.destroy
-        end
-        # need to generate section and student records
-        @session = @section.sessions.build(date: session_params[:date])
-        if @session.save
-            #save student attendance
-            @session.add_student_attendance(session_params[:student_ids])
-            redirect_to session_path(@session)
-        end
+    #     #destroy the old session if it exists
+    #     if @old_section = @section.sessions.find_by(date: session_params[:date])
+    #         @old_section.destroy
+    #     end
+    #     # need to generate section and student records
+    #     @session = @section.sessions.build(date: session_params[:date])
+    #     if @session.save
+    #         #save student attendance
+    #         @session.add_student_attendance(session_params[:student_ids])
+    #         redirect_to session_path(@session)
+    #     end
         
-    end
+    # end
     
     def show
         @session = Session.find(params[:id])

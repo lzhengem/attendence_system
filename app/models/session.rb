@@ -5,14 +5,23 @@ class Session < ActiveRecord::Base
   # attr_accessor :date
   
   #takes in an array of student_ids and adds it to the session
-  def add_student_attendance(student_ids)
+  # def add_student_attendance(student_ids)
   
-  #this needs to update the attendances to true
-    # student_ids.each do |student_id|
-    #   @student = Student.find(student_id)
-    #   attendances.create(student: @student, present: true)
-    # end
+  # #this needs to update the attendances to true
+  #   # student_ids.each do |student_id|
+  #   #   @student = Student.find(student_id)
+  #   #   attendances.create(student: @student, present: true)
+  #   # end
+  # end
+  
+  def update_student_attendance(present_student_ids)
+    attendances.each do |attendance|
+      # if the student is one of the present_student_ids, then change their present to true
+      present_student_ids.include?(attendance.student_id.to_s) ? attendance.update_attribute(:present, true) : attendance.update_attribute(:present, false)
+    end
+    
   end
+  
   
   def initialize_student_attendance(student_ids)
       student_ids.each do |student_id|
