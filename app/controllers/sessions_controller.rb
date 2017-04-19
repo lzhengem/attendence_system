@@ -15,6 +15,9 @@ class SessionsController < ApplicationController
         @attendances = @session.attendances
     end
     
+    def update
+    end
+    
     def create
         @section=Section.find(session_params[:section_id])
         # if the session already exists, then overwrite it

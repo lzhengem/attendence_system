@@ -3,18 +3,22 @@
 <h2>Attendance for <%= @session.date %></h2> 
 
 
-Student name Present
-<% @attendances.each do |attendance| %>
-<br><%= attendance.student.full_name %> <%= attendance.present %> 
+<!--Student name Present-->
+<!--<% @attendances.each do |attendance| %>-->
+<!--<br><%= attendance.student.full_name %> <%= attendance.present %> -->
 
-<% end %>
+<!--<% end %>-->
 
 
-Student:  Present?
+<!--Student:  Present?-->
 <%=form_for @session do |f|%>
     
 <!--need to configure checkboxes-->
-    <%= f.collection_check_boxes :student_ids, @session.students, :id, :full_name, :include_hidden => false, checked: false%>
+     <!--f.collection_check_boxes :student_ids, @session.students, :id, :full_name, :include_hidden => false, checked: false%>-->
+     <% @session.students.each do |student| %>
+     <%= student.full_name %>
+     <%= f.check_box(:student_ids,{multiple: true,:include_hidden => false, :checked => student.present_at?(@session)}, student.id, ) %>
+     <% end %>
     
     <%= f.submit "go" %>
 <% end %>

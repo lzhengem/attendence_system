@@ -9,6 +9,9 @@ class Student < ActiveRecord::Base
     validates :last_name, presence: true
     before_save :capitalize_name
     
+    # order it by first name always
+    default_scope { order(first_name: :asc) }
+    
     def full_name
         "#{first_name} #{last_name}"
     end
@@ -18,5 +21,8 @@ class Student < ActiveRecord::Base
         self.last_name.capitalize!
     end
     
+    def present_at?(session)
+        attendances.find_by(session_id: session).present
+    end
     
 end
