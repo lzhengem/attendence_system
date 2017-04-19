@@ -17,4 +17,6 @@ class Student
   has_many :sessions, through: :attendances
 end
 
--make it easier to use
+session.edit.html: need to fix the boxes so that if the student was present, the box is checked present
+<!--need to configure checkboxes-->
+    <%= f.collection_check_boxes :student_ids, @session.students, :id, :full_name, :include_hidden => false, checked: false%>
