@@ -6,11 +6,16 @@
 <h2>Attendance for <%= link_to "Today: #{Date.today.strftime('%B %d %Y')}", new_session_path(section: @section, date: Date.today) %></h2>
 <!--toggle the calendar if they want the do attendance for other days-->
 <h2>Attendance for <a href"#" data-toggle="collapse" data-target="#calendar">Other days</a></h2>
-<div class="collapse" id="calendar">
-    <%= month_calendar do |date| %>
+<!--<div class="collapse" id="calendar">-->
+    <!--<%= month_calendar do |date| %>-->
+    <!--  <%= link_to date.strftime("%d"), new_session_path(section: @section, date: date) %>-->
+    <!--<% end %>-->
+    
+    <%= month_calendar partial: 'simple_calendar/calendar' do |date| %>
       <%= link_to date.strftime("%d"), new_session_path(section: @section, date: date) %>
     <% end %>
-</div>
+    
+<!--</div>-->
 
 
 <br>Enrolled students:

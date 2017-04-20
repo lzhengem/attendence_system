@@ -17,6 +17,11 @@ class Student
   has_many :sessions, through: :attendances
 end
 
-add calender, so can change attendance on other days
+-added calendar, but try to make it toggle. however, when clicking
+on previous months, it opens the new page, and the calendar is toggled back
+to hiding.  need to make it so that it will stay open. or 
+open a new link for the calendar
+
+
 include better links
 adjust the page layouts
