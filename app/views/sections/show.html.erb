@@ -3,7 +3,15 @@
 <h2>Section: <%= @section.id %></h2>
 <%= link_to "Back to index", root_path, class: "btn btn-primary" %>
 <!--data can be retrieved in the controller using params[:section]-->
-<h2>Attendance for <%= link_to Date.today, new_session_path(section: @section, date: Date.today) %></h2>
+<h2>Attendance for <%= link_to "Today: #{Date.today.strftime('%B %d %Y')}", new_session_path(section: @section, date: Date.today) %></h2>
+<!--toggle the calendar if they want the do attendance for other days-->
+<h2>Attendance for <a href"#" data-toggle="collapse" data-target="#calendar">Other days</a></h2>
+<div class="collapse" id="calendar">
+    <%= month_calendar do |date| %>
+      <%= link_to date.strftime("%d"), new_session_path(section: @section, date: date) %>
+    <% end %>
+</div>
+
 
 <br>Enrolled students:
 
