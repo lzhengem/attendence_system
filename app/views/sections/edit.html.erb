@@ -1,28 +1,28 @@
-<!--<% provide(:title, "Section detail") %>-->
+<% provide(:title, "Section detail") %>
 
 
-<!--<h1>Title: <%= "#{@section.course.crn} #{@section.course.title}"%></h1>-->
-<!--<%= link_to "Back to section view", section_path(@section), class: "btn btn-primary" %>-->
+<h1>Title: <%= "#{@section.course.crn} #{@section.course.title}"%></h1>
+<%= link_to "Back to section view", section_path(@section), class: "btn btn-primary" %>
 
 
-<!--<%= form_for @section do |f|%>-->
-<!--    Remove students from section:-->
-<!--    <ul><% @section.students.each do |student| %>-->
-        <!--this method will send the hidden field with '0', so make sure if unchecked, it returns nil instead of 0-->
-<!--        <li><%= f.check_box("students", {:multiple => true}, student.id, nil) %> <%=student.full_name%></li>-->
+<%= form_for @section do |f|%>
+    Remove students from section:
+    <ul><% @section.students.each do |student| %>
+        this method will send the hidden field with '0', so make sure if unchecked, it returns nil instead of 0
+        <li><%= f.check_box("students", {:multiple => true}, student.id, nil) %> <%=student.full_name%></li>
     
-<!--    <% end %>-->
-<!--    </ul>    -->
+    <% end %>
+    </ul>    
 
-<!--    Add Students to section:-->
-<!--    <ul>-->
-        <!--this method will send the hidden field with '0', so make sure if unchecked, it returns nil instead of 0-->
+    Add Students to section:
+    <ul>
+        this method will send the hidden field with '0', so make sure if unchecked, it returns nil instead of 0
         
-        <!--issue: i need top ass these multiple ids, but active record won't pass these ids through... because it is not a flattened array-->
+        issue: i need top ass these multiple ids, but active record won't pass these ids through... because it is not a flattened array
         
-<!--        <% Student.where.not(id: @section.course.students.ids).each do |student|%>-->
-<!--        <li><%= f.check_box("student_ids", {:multiple => true}, student.id, nil) %> <%= student.full_name%></li>-->
-<!--        <% end %>-->
-<!--    </ul>    -->
-<!--    <%= f.submit "Edit Students" %>-->
-<!--<% end %>-->
+        <% Student.where.not(id: @section.course.students.ids).each do |student|%>
+        <li><%= f.check_box("student_ids", {:multiple => true}, student.id, nil) %> <%= student.full_name%></li>
+        <% end %>
+    </ul>    
+    <%= f.submit "Edit Students" %>
+<% end %>
