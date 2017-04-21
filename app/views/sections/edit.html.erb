@@ -20,7 +20,7 @@
         
         <!--issue: i need top ass these multiple ids, but active record won't pass these ids through... because it is not a flattened array-->
         
-        <% Student.where.not(id: @section.course.students.ids).uniq.each do |student|%>
+        <% Student.where.not(id: @section.students.ids).uniq.each do |student|%>
         <li><%= f.check_box("student_ids", {:multiple => true}, student.id, nil) %> <%= student.full_name%></li>
         <% end %>
     </ul>    
