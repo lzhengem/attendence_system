@@ -2,37 +2,33 @@
 <h1>Title: <%= "#{@section.course.crn} #{@section.course.title}"%></h1>
 <h2>Section: <%= @section.id %></h2>
 <%= link_to "Back to index", root_path, class: "btn btn-primary" %>
-<!--data can be retrieved in the controller using params[:section]-->
+
+
 <h2>Attendance for <%= link_to "Today", new_session_path(section: @section, date: Date.today) %></h2>
 <!--toggle the calendar if they want the do attendance for other days-->
-<!--<h2>Attendance for <a href"#" data-toggle="modal" data-target="#calendar">Other days</a></h2>-->
-<!--<div class="modal" id="calendar">-->
-    <!--<%= month_calendar do |date| %>-->
-    <!--  <%= link_to date.strftime("%d"), new_session_path(section: @section, date: date) %>-->
-    <!--<% end %>-->
-    
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        
     <%= month_calendar partial: 'simple_calendar/calendar' do |date| %>
     <!--if there is no params, then it should be the current month-->
     <% params[:start_date].nil? ? month = Date.today.month : month = params[:start_date].to_date.month %>
     <!--only show the dates from the current month on calendar-->
-    <% if date.month == month %>
-      <%= link_to date.strftime("%d"), new_session_path(section: @section, date: date) %>
+        <% if date.month == month %>
+          <%= link_to date.strftime("%d"), new_session_path(section: @section, date: date) %>
+        <% end %>
     <% end %>
-    <% end %>
+    </div>
+</div>    
     
-<!--</div>-->
 
 
 <br>Enrolled students:
-
 <ul><% @section.students.each do |student|%>
-                <li><%= "#{student.first_name} #{student.last_name} "%></li>
-                <% end %>
-                <%= if @section.students.empty? then "No students currently enrolled" end %>
-                
-                </ul>
-
+    <li><%= "#{student.first_name} #{student.last_name} "%></li>
+    <% end %>
+    <%= if @section.students.empty? then "No students currently enrolled" end %>
+</ul>
 </br>
 
+
 <%= link_to "Add/remove students in section", edit_section_path(@section) %>
-    

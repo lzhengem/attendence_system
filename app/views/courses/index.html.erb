@@ -1,22 +1,24 @@
 <% provide(:title, "Courses Home Page") %>
 <h1>Courses Home Page</h1>
-<ul style="list-style: none;">
-    <% @courses.each do |course| %>
-        <!--create a toggle to show the sections under these courses-->
-        <li data-toggle="collapse" data-target="#sections-<%=course.crn%>"><span class="caret"></span> 
-        <!--creates a link to the show page-->
-        <!--link_to "#{course.crn} #{course.title}", course_path(course) %>-->
-        <%= "#{course.crn} #{course.title}" %>
-    
-            <ul class="collapse" id="sections-<%=course.crn%>">
-                
-                <% course.sections.each do |section|%>
-                    <li><%= link_to section.id, section_path(section) %></li>
-                <%end%>
-                
-            </ul>
-        </li>
-    
-    
-    <% end %>
-</ul>
+<div class="row">
+    <div class="col-md-3 col-md-offset-4">
+        <ul>
+            <% @courses.each do |course| %>
+                <!--create a toggle to show the sections under these courses-->
+                <li class="form-control" data-toggle="collapse" data-target="#sections-<%=course.crn%>"><span class="caret"></span>
+                <!--creates a link to the show page-->
+                <!--link_to "#{course.crn} #{course.title}", course_path(course) %>-->
+                <%= "#{course.crn} #{course.title}" %>
+                </li>
+            
+                <ul class="collapse" id="sections-<%=course.crn%>">
+                    
+                    <% course.sections.each do |section|%>
+                        <li><%= link_to section.id, section_path(section) %></li>
+                    <%end%>
+                </ul>
+
+            <% end %>
+        </ul>
+    </div>
+</div>

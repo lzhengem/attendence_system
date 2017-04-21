@@ -24,9 +24,11 @@
      </li>
      
      <% end %>
-     
-    
+     <% if @session.students.empty? %>
+     <%= "No students currently enrolled"%>
+     <% else %>
     <%= f.submit "go", class: "btn btn-primary" %>
+    <% end%>
 <% end %>
 
 </ol>
