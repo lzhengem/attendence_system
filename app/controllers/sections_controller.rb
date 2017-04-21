@@ -8,7 +8,6 @@ class SectionsController < ApplicationController
     
     def edit
         @section = Section.find_by(id: params[:id])
-        @student_ids = @section.course.students.ids
     end
     
     def update
