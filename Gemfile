@@ -54,7 +54,7 @@ group :development do
   
 group :production do
   gem 'pg', '0.18.4' #heroku uses postgres
-  gem 'rails_12factor' #heroku warning to install this gem...
+  # gem 'rails_12factor' #heroku warning to install this gem...
 end
 
 end
